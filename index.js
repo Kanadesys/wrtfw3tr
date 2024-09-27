@@ -8,7 +8,19 @@ app.set('view engine', 'ejs');
 app.get("/" ,(req,res) => {
     //res.send("hello");
     //res.sendFile(__dirname + "/home.html");
-    res.render('index', {title: 'Halaman Home'});
+    //res.render('index', {title: 'Halaman Home'});
+
+    const berita = [
+        {
+            judul: "Berita 1",
+            isi: "Isi Berita 1"
+        },
+        {
+            judul: "Berita 2",
+            isi: "Isi Berita 2"
+        },
+    ];
+    res.render('index', {title: 'Halaman Home', berita});
 });
 
 //route
@@ -44,6 +56,43 @@ app.get("/dosen", (req,res)=>{
     ]
     })
 });
+
+app.get("/prodi" ,(req,res) => {
+    const prodi = [
+        {
+            prodi: "Sistem Informasi",
+            fakultas: "FKIR",
+            singkatan: "SI"
+        },
+        {
+            prodi: "Informatika",
+            fakultas: "FKIR",
+            singkatan: "IF"
+        },
+        {
+            prodi: "Teknologi Elektro",
+            fakultas: "FKIR",
+            singkatan: "TE"
+        },
+        {
+            prodi: "Manajemen Informatika",
+            fakultas: "FKIR",
+            singkatan: "MI"
+        },
+        {
+            prodi: "Manajemen",
+            fakultas: "FEB",
+            singkatan: "MJ"
+        },
+        {
+            prodi: "Akutansi",
+            fakultas: "FEB",
+            singkatan: "AK"
+        },
+    ];
+    res.render('prodi', {title: 'Halaman Prodi', prodi});
+});
+
 // handle route yang tidak terdaftar
 app.use("/" ,(req,res) => {
     res.send("<h1>404 not found</h1>");
